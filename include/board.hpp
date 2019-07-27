@@ -16,11 +16,34 @@
 
 class Board {
     public:
+        /**
+         * @brief Construct a new Board object
+         * 
+         */
         Board();
+        /**
+         * @brief Destroy the Board object
+         * 
+         */
         ~Board();
+        /**
+         * @brief Prints the board to the terminal
+         * 
+         */
         void printBoard();
-        Tile getTile(int x, int y);
+        /**
+         * @brief Get the Tile object
+         * 
+         * @param x X index of desired tile
+         * @param y Y index of desired tile
+         * @return Tile* Pointer to tile at the desired position
+         */
+        Tile* getTile(int x, int y);
     private:
+        /**
+         * @brief Array of tiles which constitutes the board
+         * 
+         */
         Tile** array;
 };
 

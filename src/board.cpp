@@ -14,23 +14,30 @@
 #include <cstdio>
 
 Board::Board() {
-    
+    printf("Constructing a new board.\n");
 }
 
 Board::~Board() {
-    printf("board destructor running yo!");
-}
-
-void Board::printBoard() {
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 4; j++){
-            Tile t = getTile(i, j);
-
+    printf("Board destructor running yo!\n");
+    for(int i = 0; i < 4; i++) {
+        for(int j = 0; j < 4; j++) {
+            Tile* t = getTile(i, j);
+            // Delete the tile
+            delete t;
         }
     }
 }
 
-Tile Board::getTile(int x, int y) {
+void Board::printBoard() {
+    for(int i = 0; i < 4; i++) {
+        for(int j = 0; j < 4; j++) {
+            Tile* t = getTile(i, j);
+            // Print the tile
+        }
+    }
+}
+
+Tile* Board::getTile(int x, int y) {
     
 }
 
