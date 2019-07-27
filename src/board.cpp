@@ -42,9 +42,16 @@ void Board::printBoard() {
         for (int j = 0; j < 4; j++) {
             Tile* t = getTile(i, j);
             // Print the tile
-            t->print();
+            if (t != nullptr) {
+                t->print();
+            } else {
+                this->printBlankTile();
+            }
         }
+        // Print a new line for next row
+        printf("\n");
     }
+    printf("Please input a move: \n");
 }
 
 Tile* Board::getTile(int x, int y) {
@@ -58,3 +65,11 @@ void Board::removeTile(int x, int y) {
     boardArray[x][y] = nullptr;
 }
 
+void Board::printBlankTile() {
+    printf("[ X ]");
+    /*
+    printf("***** ");
+    printf("*   * ");
+    printf("***** ");
+    */
+}

@@ -55,6 +55,8 @@ class Board {
          * 
          */
         Tile* boardArray[4][4];
+
+        void printBlankTile();
 };
 
 #endif
