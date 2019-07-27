@@ -56,6 +56,12 @@ class GameController {
         void stopGame();
 
         /**
+         * @brief Reads the user keyboard input to control the game.
+         * 
+         */
+        void readInput();
+
+        /**
          * @brief 
          * 
          * @param direction 
