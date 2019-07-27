@@ -1,7 +1,7 @@
 /**
  * @file tile.h
- * @author your name (you@domain.com)
- * @brief 
+ * @author zach kemp
+ * @brief tile header file with variables, etc
  * @version 0.1
  * @date 2019-07-27
  * 
@@ -11,7 +11,7 @@
 
 class Tile {
     public:
-        Tile();
+        Tile(int v, int x, int y);
         ~Tile();
         int getValue(void);
         void setValue(int);
