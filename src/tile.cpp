@@ -9,7 +9,7 @@
  * 
  */
 
-#include "tile.h"
+#include "tile.hpp"
 #include <stdio.h>
 #include <cstdio>
 
@@ -20,7 +20,7 @@ Tile::Tile(int v, int x, int y){
 }
 
 Tile::~Tile(){
-    printf("destructor running yo!");
+    printf("tile destructor running yo!");
 }
 
 int Tile::getValue(){
