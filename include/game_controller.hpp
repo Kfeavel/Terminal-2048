@@ -44,7 +44,8 @@ class GameController {
         };
 
     private:
-        // TODO: Include board definition here
+        // Class game board
+        Board* board;
 
         /**
          * @brief Starts the game for the given GameController.

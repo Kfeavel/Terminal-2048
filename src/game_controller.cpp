@@ -7,15 +7,21 @@ GameController::GameController() {
 
 GameController::~GameController() {
     printf("Destroying GameContoller...\n");
+    // Destroy the board
+    delete this->board;
 }
 
 void GameController::startGame() {
     printf("Starting 2048...\n");
+    // Construct a new board
+    this->board = new Board();
+    // Start reading user input
     readInput();
 }
 
 void GameController::stopGame() {
     printf("Stopping 2048...\n");
+    // Print score to screen
 }
 
 void GameController::readInput() {
