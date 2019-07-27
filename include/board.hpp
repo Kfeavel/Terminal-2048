@@ -39,6 +39,14 @@ class Board {
          * @return Tile* Pointer to tile at the desired position
          */
         Tile* getTile(int x, int y);
+
+        /**
+         * @brief Removes a tile at a position from the board
+         * 
+         * @param x X index of desired tile
+         * @param y Y index of desired tile
+         */
+        void removeTile(int x, int y);
     private:
         /**
          * @brief Array of pointers to tiles which constitutes the board

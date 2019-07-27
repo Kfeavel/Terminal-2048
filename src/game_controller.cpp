@@ -90,9 +90,13 @@ void GameController::checkNeighbor(GameController::Direction direction, Tile* so
 }
 
 void GameController::combineTiles(Tile* stay, Tile* remove) {
+    // Get both values and combine them
     int stayVal = stay->getValue();
     int remVal = remove->getValue();
     int combined = stayVal + remVal;
     stay->setValue(combined);
-    delete remove;
+    // Get the X & Y for the removed tile and call the remover function
+    int remX = remove->getX();
+    int remY = remove->getY();
+    board->removeTile(remX, remY);
 }

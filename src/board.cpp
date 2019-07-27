@@ -15,6 +15,13 @@
 
 Board::Board() {
     printf("Constructing a new board.\n");
+    // Set everything to nullpts at first
+    // That way we can safely destruct later
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            this->boardArray[i][j] = nullptr;
+        }
+    }
 }
 
 Board::~Board() {
@@ -22,8 +29,10 @@ Board::~Board() {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
             Tile* t = getTile(i, j);
-            // Delete the tile
-            delete t;
+            // Delete the tile if it exists
+            if (t != nullptr) {
+                delete t;
+            }
         }
     }
 }
@@ -40,5 +49,12 @@ void Board::printBoard() {
 
 Tile* Board::getTile(int x, int y) {
     return this->boardArray[x][y];
+}
+
+void Board::removeTile(int x, int y) {
+    // Get the tile, delete it and set the location to a nullptr
+    Tile* tile = this->getTile(x, y);
+    delete tile;
+    boardArray[x][y] = nullptr;
 }
 
