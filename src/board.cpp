@@ -19,8 +19,8 @@ Board::Board() {
 
 Board::~Board() {
     printf("Board destructor running yo!\n");
-    for(int i = 0; i < 4; i++) {
-        for(int j = 0; j < 4; j++) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
             Tile* t = getTile(i, j);
             // Delete the tile
             delete t;
@@ -29,15 +29,16 @@ Board::~Board() {
 }
 
 void Board::printBoard() {
-    for(int i = 0; i < 4; i++) {
-        for(int j = 0; j < 4; j++) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
             Tile* t = getTile(i, j);
             // Print the tile
+            t->print();
         }
     }
 }
 
 Tile* Board::getTile(int x, int y) {
-    
+    return this->boardArray[x][y];
 }
 

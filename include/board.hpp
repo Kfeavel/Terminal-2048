@@ -41,10 +41,12 @@ class Board {
         Tile* getTile(int x, int y);
     private:
         /**
-         * @brief Array of tiles which constitutes the board
+         * @brief Array of pointers to tiles which constitutes the board
+         * (The typical 2048 board is 4x4, thus this is how we
+         * are defining the size of our array.)
          * 
          */
-        Tile** array;
+        Tile* boardArray[4][4];
 };
 
 #endif
