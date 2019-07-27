@@ -9,6 +9,12 @@
  * 
  */
 
+#ifndef TILE_H
+#define TILE_H
+
+#include <stdio.h>
+#include <cstdio>
+
 class Tile {
     public:
         /**
@@ -62,3 +68,5 @@ class Tile {
         int x;
         int y;
 };
+
+#endif

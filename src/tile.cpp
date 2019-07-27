@@ -10,8 +10,6 @@
  */
 
 #include "tile.hpp"
-#include <stdio.h>
-#include <cstdio>
 
 Tile::Tile(int v, int x, int y){
     setValue(v);

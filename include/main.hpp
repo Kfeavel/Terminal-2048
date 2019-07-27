@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef MAIN_H
+#define MAIN_H
+
 // Include local classes
 #include "game_controller.hpp"
 
@@ -19,3 +22,5 @@
  * @return int Main return code
  */
 int main();
+
+#endif

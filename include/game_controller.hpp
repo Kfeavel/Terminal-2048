@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef GAME_CONTROLLER_H
+#define GAME_CONTROLLER_H
+
 // Include system libraries
 #include <stdio.h>
 #include <cstdio>
@@ -82,3 +85,5 @@ class GameController {
          */
         void combineTiles(Tile x, Tile y);
 };
+
+#endif

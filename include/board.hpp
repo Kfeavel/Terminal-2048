@@ -9,6 +9,11 @@
  * 
  */
 
+#ifndef BOARD_H
+#define BOARD_H
+
+#include "tile.hpp"
+
 class Board {
     public:
         Board();
@@ -16,5 +21,7 @@ class Board {
         void printBoard();
         Tile getTile(int x, int y);
     private:
-        Tile array[][];
-}
+        Tile** array;
+};
+
+#endif
