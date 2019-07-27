@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.hpp"
 
 int main() {
     // Construct a new GameController and let it take over control

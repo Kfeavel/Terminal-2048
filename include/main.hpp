@@ -10,7 +10,7 @@
  */
 
 // Include local classes
-#include "game_controller.h"
+#include "game_controller.hpp"
 
 /**
  * @brief The main program function. No need to include argc or argv since

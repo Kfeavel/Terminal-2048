@@ -1,4 +1,4 @@
-#include "game_controller.h"
+#include "game_controller.hpp"
 
 GameController::GameController() {
     printf("Constructing a new GameContoller\n");

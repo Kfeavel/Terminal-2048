@@ -13,8 +13,8 @@
 #include <stdio.h>
 #include <cstdio>
 // Include local classes
-#include "tile.h"
-#include "board.h"
+#include "tile.hpp"
+#include "board.hpp"
 
 class GameController {
     public:
