@@ -24,11 +24,3 @@ class Tile {
         int x;
         int y;
 };
-
-Tile::Tile(void){
-    ;
-}
-
-Tile::~Tile(void){
-    ;
-}
