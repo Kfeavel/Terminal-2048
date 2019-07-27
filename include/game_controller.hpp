@@ -76,14 +76,14 @@ class GameController {
          * @param direction 
          * @param source 
          */
-        void checkNeighbor(Direction direction, Tile source);
+        void checkNeighbor(Direction direction, Tile* source);
         /**
          * @brief 
          * 
          * @param x 
          * @param y 
          */
-        void combineTiles(Tile x, Tile y);
+        void combineTiles(Tile* stay, Tile* remove);
 };
 
 #endif

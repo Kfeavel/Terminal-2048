@@ -41,9 +41,6 @@ void GameController::readInput() {
             case 'q':
                 stopGame();
                 break;
-            default:
-                printf("Invalid option.\n");
-                break;
         }
     }
 }
@@ -62,16 +59,34 @@ void GameController::move(GameController::Direction direction) {
         case right:
             printf("Move right.\n");
             break;
-        default:
-            printf("Invalid direction.\n");
+    }
+}
+
+void GameController::checkNeighbor(GameController::Direction direction, Tile* source) {
+    switch (direction) {
+        case top:
+            printf("Check upward.\n");
+            printf("%i", source->getValue());
+            break;
+        case bottom:
+            printf("Check downward.\n");
+            printf("%i", source->getValue());
+            break;
+        case left:
+            printf("Check left.\n");
+            printf("%i", source->getValue());
+            break;
+        case right:
+            printf("Check right.\n");
+            printf("%i", source->getValue());
             break;
     }
 }
 
-void GameController::checkNeighbor(GameController::Direction direction, Tile source) {
-
-}
-
-void GameController::combineTiles(Tile x, Tile y) {
-
+void GameController::combineTiles(Tile* stay, Tile* remove) {
+    int stayVal = stay->getValue();
+    int remVal = remove->getValue();
+    int combined = stayVal + remVal;
+    stay->setValue(combined);
+    delete remove;
 }
