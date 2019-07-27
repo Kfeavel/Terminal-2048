@@ -64,6 +64,7 @@ class Tile {
          */
         void setY(int);
     private:
+        // Tile properties
         int value;
         int x;
         int y;

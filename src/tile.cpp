@@ -11,36 +11,36 @@
 
 #include "tile.hpp"
 
-Tile::Tile(int v, int x, int y){
+Tile::Tile(int v, int x, int y) {
     setValue(v);
     setX(x);
     setY(y);
 }
 
-Tile::~Tile(){
+Tile::~Tile() {
     printf("tile destructor running yo!");
 }
 
-int Tile::getValue(){
+int Tile::getValue() {
     return this->value;
 }
 
-void Tile::setValue(int v){
+void Tile::setValue(int v) {
     this->value = v;
 }
 
-int Tile::getX(){
+int Tile::getX() {
     return this->x;
 }
 
-void Tile::setX(int x){
+void Tile::setX(int x) {
     this->x = x;
 }
 
-int Tile::getY(){
+int Tile::getY() {
     return this->y;
 }
 
-void Tile::setY(int y){
+void Tile::setY(int y) {
     this->y = y;
 }
