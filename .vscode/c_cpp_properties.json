@@ -3,8 +3,14 @@
         {
             "name": "macOS",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include"
             ],
+            "browse": {
+                "path": [ "${workspaceFolder}" ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
             "defines": [],
             "macFrameworkPath": [
                 "/System/Library/Frameworks",

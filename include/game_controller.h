@@ -9,6 +9,9 @@
  * 
  */
 
+// Include system libraries
+#include <stdio.h>
+#include <cstdio>
 // Include local classes
 #include "tile.h"
 #include "board.h"
@@ -38,6 +41,20 @@ class GameController {
         };
 
     private:
+        // TODO: Include board definition here
+
+        /**
+         * @brief Starts the game for the given GameController.
+         * 
+         */
+        void startGame();
+
+        /**
+         * @brief Stops the game for the given GameController.
+         * 
+         */
+        void stopGame();
+
         /**
          * @brief 
          * 

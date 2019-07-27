@@ -9,7 +9,8 @@
  * 
  */
 
-const char* version = "0.1.0";
+// Include local classes
+#include "game_controller.h"
 
 /**
  * @brief The main program function. No need to include argc or argv since
