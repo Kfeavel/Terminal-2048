@@ -28,7 +28,7 @@ void GameController::readInput() {
     // Create a keyboard key input variable
     char input = NULL;
     // While the user hasn't called the quit key
-    while (input != 'q') {
+    while (true) {
         // Continue to read input and call functions
         input = getchar();
         switch (input) {
@@ -45,8 +45,18 @@ void GameController::readInput() {
                 GameController::move(right);
                 break;
             case 'q':
+                // Call the stop game function and exit this function
                 stopGame();
-                break;
+                return;
+        }
+        // Now that we have our input, call the
+        // appropriate logic functions and then
+        // print the resulting board to the console
+        if (input != '\n') {
+            // getChar gets the return key along with the input
+            // so we have to have this if statement to not double
+            // print everything
+            board->printBoard();
         }
     }
 }
