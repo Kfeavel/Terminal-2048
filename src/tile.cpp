@@ -44,3 +44,9 @@ int Tile::getY() {
 void Tile::setY(int y) {
     this->y = y;
 }
+
+void Tile::print() {
+    printf("***** ");
+    printf("* %i * ", this->getValue());
+    printf("***** ");
+}

@@ -63,6 +63,11 @@ class Tile {
          * 
          */
         void setY(int);
+        /**
+         * @brief Prints the tile to the terminal
+         * 
+         */
+        void print();
     private:
         // Tile properties
         int value;
