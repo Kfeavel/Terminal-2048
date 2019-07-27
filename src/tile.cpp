@@ -20,7 +20,7 @@ Tile::Tile(int v, int x, int y){
 }
 
 Tile::~Tile(){
-    printf;
+    printf("destructor running yo!");
 }
 
 int Tile::getValue(){
