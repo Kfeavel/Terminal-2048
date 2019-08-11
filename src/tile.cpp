@@ -18,7 +18,7 @@ Tile::Tile(int v, int x, int y) {
 }
 
 Tile::~Tile() {
-    printf("tile destructor running yo!");
+    //printf("tile destructor running yo!\n");
 }
 
 int Tile::getValue() {

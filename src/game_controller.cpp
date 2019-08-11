@@ -20,6 +20,7 @@ GameController::~GameController() {
     printf("Destroying GameContoller...\n");
     // Destroy the board
     delete this->board;
+    printf("Done deleting board.\n");
 }
 
 void GameController::startGame() {
@@ -39,8 +40,7 @@ void GameController::startGame() {
 void GameController::stopGame() {
     printf("Stopping 2048...\n");
     // Print score to screen
-    // Delete self
-    delete this;
+    return;
 }
 
 void GameController::readInput() {
@@ -52,20 +52,20 @@ void GameController::readInput() {
         input = getchar();
         switch (input) {
             case 'w':
-                GameController::move(top);
+                this->move(top);
                 break;
             case 'a':
-                GameController::move(left);
+                this->move(left);
                 break;
             case 's':
-                GameController::move(bottom);
+                this->move(bottom);
                 break;
             case 'd':
-                GameController::move(right);
+                this->move(right);
                 break;
             case 'q':
                 // Call the stop game function and exit this function
-                stopGame();
+                this->stopGame();
                 return;
         }
         // Now that we have our input, call the appropriate logic functions and then
@@ -77,6 +77,7 @@ void GameController::readInput() {
             if (board->checkForFullBoard()) {
                 printf("The board is full. Stopping the game.\n");
                 this->stopGame();
+                return;
             } else {
                 // Insert the random tile
                 board->addRandomTileToBoard();
