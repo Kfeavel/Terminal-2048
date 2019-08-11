@@ -19,7 +19,8 @@ Board::Board() {
     // That way we can safely destruct later
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-            this->boardArray[i][j] = nullptr;
+            Tile *t = new Tile(2, i, j);
+            this->boardArray[i][j] = t;
         }
     }
 }
