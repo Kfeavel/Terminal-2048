@@ -48,6 +48,12 @@ void GameController::readInput() {
     char input = NULL;
     // While the user hasn't called the quit key
     while (true) {
+        printf("Checking board status...\n");
+        if (board->checkForFullBoard()) {
+            printf("The board is full. Stopping the game.\n");
+            this->stopGame();
+            return;
+        }
         // Continue to read input and call functions
         input = getchar();
         switch (input) {
@@ -73,17 +79,10 @@ void GameController::readInput() {
         // Also, getChar gets the return key along with the input so we have to 
         // have this if statement to not double
         if (input != '\n') {
-            printf("Checking board status...\n");
-            if (board->checkForFullBoard()) {
-                printf("The board is full. Stopping the game.\n");
-                this->stopGame();
-                return;
-            } else {
-                // Insert the random tile
-                board->addRandomTileToBoard();
-                // Print the updated board
-                board->printBoard();
-            }
+            // Insert the random tile
+            board->addRandomTileToBoard();
+            // Print the updated board
+            board->printBoard();
         }
     }
 }

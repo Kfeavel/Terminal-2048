@@ -17,7 +17,7 @@ Board::Board() {
     // That way we can safely destruct later
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-            this->boardArray[i][j] = nullptr;
+            this->boardArray[i][j] = NULL;
         }
     }
     printf("Seeding rand()...\n");
@@ -30,7 +30,7 @@ Board::~Board() {
         for (int j = 0; j < 4; j++) {
             Tile* t = getTile(i, j);
             // Delete the tile if it exists
-            if (t != nullptr) {
+            if (t != NULL) {
                 delete t;
             }
         }
@@ -42,7 +42,7 @@ void Board::printBoard() {
         for (int j = 0; j < 4; j++) {
             Tile* t = getTile(i, j);
             // Print the tile
-            if (t != nullptr) {
+            if (t != NULL) {
                 t->print();
             } else {
                 this->printBlankTile();
@@ -87,7 +87,7 @@ void Board::addRandomTileToBoard() {
     int x = rand() % 4;
     int y = rand() % 4;
     int val = 0;
-    while (this->getTile(x, y) != nullptr) {
+    while (this->getTile(x, y) != NULL) {
         // If we've searched 16 times and can't find anything
         // Check if the board isn't full
         x = rand() % 4;
@@ -113,10 +113,13 @@ void Board::addRandomTileToBoard() {
 bool Board::checkForFullBoard() {
     for (int x = 0; x < 4; x++) {
         for (int y = 0; x < 4; x++) {
-            if (this->getTile(x, y) == nullptr) {
+            printf("Checking X: %i Y: %i\n", x, y);
+            if (this->getTile(x, y) == NULL) {
+                printf("Board open at %i %i\n", x, y);
                 return false;
             }
         }
     }
+    printf("Board is full according to checkForFullBoard()\n");
     return true;
 }
