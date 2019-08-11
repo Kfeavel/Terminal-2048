@@ -1,3 +1,14 @@
+/**
+ * @file game_controller.cpp
+ * @author Keeton Feavel & Zack Kemp
+ * @brief Controls all of the game logic and movement
+ * @version 0.1
+ * @date 2019-07-27
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
+
 #include "game_controller.hpp"
 
 GameController::GameController() {
@@ -13,8 +24,14 @@ GameController::~GameController() {
 
 void GameController::startGame() {
     printf("Starting 2048...\n");
-    // Construct a new board
+    // Construct a new board with a pointer to this controller
     this->board = new Board();
+    // Insert the random tiles
+    for (int i = 0; i < 2; i++) {
+        board->addRandomTileToBoard();
+    }
+    // After we construct show the board
+    this->board->printBoard();
     // Start reading user input
     readInput();
 }
@@ -56,6 +73,12 @@ void GameController::readInput() {
             // getChar gets the return key along with the input
             // so we have to have this if statement to not double
             // print everything
+            if (board->checkForFullBoard()) {
+                this->stopGame();
+            }
+            // Insert the random tile
+            board->addRandomTileToBoard();
+            // Print the updated board
             board->printBoard();
         }
     }

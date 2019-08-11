@@ -12,7 +12,13 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+// Include local classes
 #include "tile.hpp"
+// Include system libraries
+#include <stdio.h>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
 
 class Board {
     public:
@@ -41,12 +47,32 @@ class Board {
         Tile* getTile(int x, int y);
 
         /**
+         * @brief Inserts a tile into the board
+         * 
+         * @param tile The tile to be inserted
+         */
+        void insertTile(Tile *tile);
+
+        /**
          * @brief Removes a tile at a position from the board
          * 
          * @param x X index of desired tile
          * @param y Y index of desired tile
          */
         void removeTile(int x, int y);
+
+        /**
+         * @brief Adds 2 random tiles to the board after each turn.
+         * 
+         */
+        void addRandomTileToBoard();
+
+        /**
+         * @brief Checks if a board is full and ends the game if necessary
+         * 
+         */
+        bool checkForFullBoard();
+
     private:
         /**
          * @brief Array of pointers to tiles which constitutes the board
@@ -56,6 +82,10 @@ class Board {
          */
         Tile* boardArray[4][4];
 
+        /**
+         * @brief Prints a blank tile for a nullptr in the board
+         * 
+         */
         void printBlankTile();
 };
 

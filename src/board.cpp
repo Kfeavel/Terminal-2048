@@ -1,7 +1,7 @@
 /**
  * @file board.cpp
- * @author zach kemp
- * @brief board cpp file with functions and such
+ * @author Keeton Feavel & Zack Kemp
+ * @brief Controls all board related functions
  * @version 0.1
  * @date 2019-07-27
  * 
@@ -10,8 +10,6 @@
  */
 
 #include "board.hpp"
-#include <stdio.h>
-#include <cstdio>
 
 Board::Board() {
     printf("Constructing a new board.\n");
@@ -19,13 +17,11 @@ Board::Board() {
     // That way we can safely destruct later
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-            // TODO: Don't fill the whole board: just 2 tiles
-            Tile *t = new Tile(2, i, j);
-            this->boardArray[i][j] = t;
+            this->boardArray[i][j] = nullptr;
         }
     }
-    // After we construct show the board
-    this->printBoard();
+    printf("Seeding rand()...\n");
+    srand(time(NULL));
 }
 
 Board::~Board() {
@@ -62,6 +58,14 @@ Tile* Board::getTile(int x, int y) {
     return this->boardArray[x][y];
 }
 
+void Board::insertTile(Tile *tile) {
+    // Get the X and Y
+    int x = tile->getX();
+    int y = tile->getY();
+    // Insert the tile at that location
+    this->boardArray[x][y] = tile;
+}
+
 void Board::removeTile(int x, int y) {
     // Get the tile, delete it and set the location to a nullptr
     Tile* tile = this->getTile(x, y);
@@ -70,10 +74,57 @@ void Board::removeTile(int x, int y) {
 }
 
 void Board::printBlankTile() {
-    printf("[ X ]");
+    printf("[   ]");
     /*
     printf("***** ");
     printf("*   * ");
     printf("***** ");
     */
+}
+
+void Board::addRandomTileToBoard() {
+    // Find a random location that is blank
+    int x = rand() % 4;
+    int y = rand() % 4;
+    int val = 0;
+    int watchDog = 0;
+    while (this->getTile(x, y) != nullptr) {
+        // If we've searched 16 times and can't find anything
+        // Check if the board isn't full
+        if (watchDog == 16) {
+            checkForFullBoard();
+        }
+        printf("Looking for open position...\n");
+        x = rand() % 4;
+        y = rand() % 4;
+        watchDog++;
+    }
+    printf("Open Position Found: %i %i\n", x, y);
+    // Generate a random number between 0 and 100
+    Tile *tile = nullptr;
+    int chance = rand() % 101;
+    if (chance < 90) {
+        // Spawn a 2 tile
+        val = 2;
+    } else {
+        // Spawn a 4 tile
+        val = 4;
+    }
+    // Create the new tile
+    tile = new Tile(val, x, y);
+    // Insert the new tile
+    this->insertTile(tile);
+}
+
+bool Board::checkForFullBoard() {
+    bool isFull = true;
+    for (int x = 0; x < 4; x++) {
+        for (int y = 0; x < 4; x++) {
+            if (this->getTile(x, y) == nullptr) {
+                isFull = false;
+            }
+        }
+    }
+
+    return isFull;
 }

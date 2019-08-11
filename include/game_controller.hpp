@@ -12,12 +12,12 @@
 #ifndef GAME_CONTROLLER_H
 #define GAME_CONTROLLER_H
 
-// Include system libraries
-#include <stdio.h>
-#include <cstdio>
 // Include local classes
 #include "tile.hpp"
 #include "board.hpp"
+// Include system libraries
+#include <stdio.h>
+#include <cstdio>
 
 class GameController {
     public:
@@ -31,6 +31,12 @@ class GameController {
          * 
          */
         ~GameController();
+
+        /**
+         * @brief Stops the game for the given GameController.
+         * 
+         */
+        void stopGame();
 
         /**
          * @brief Direction enumeration. Used for specifying movement or neighbor direction
@@ -52,12 +58,6 @@ class GameController {
          * 
          */
         void startGame();
-
-        /**
-         * @brief Stops the game for the given GameController.
-         * 
-         */
-        void stopGame();
 
         /**
          * @brief Reads the user keyboard input to control the game.
