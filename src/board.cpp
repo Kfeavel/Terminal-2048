@@ -19,10 +19,13 @@ Board::Board() {
     // That way we can safely destruct later
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
+            // TODO: Don't fill the whole board: just 2 tiles
             Tile *t = new Tile(2, i, j);
             this->boardArray[i][j] = t;
         }
     }
+    // After we construct show the board
+    this->printBoard();
 }
 
 Board::~Board() {
