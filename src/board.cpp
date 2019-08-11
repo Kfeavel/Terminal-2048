@@ -87,17 +87,11 @@ void Board::addRandomTileToBoard() {
     int x = rand() % 4;
     int y = rand() % 4;
     int val = 0;
-    int watchDog = 0;
     while (this->getTile(x, y) != nullptr) {
         // If we've searched 16 times and can't find anything
         // Check if the board isn't full
-        if (watchDog == 16) {
-            checkForFullBoard();
-        }
-        printf("Looking for open position...\n");
         x = rand() % 4;
         y = rand() % 4;
-        watchDog++;
     }
     printf("Open Position Found: %i %i\n", x, y);
     // Generate a random number between 0 and 100
@@ -117,14 +111,12 @@ void Board::addRandomTileToBoard() {
 }
 
 bool Board::checkForFullBoard() {
-    bool isFull = true;
     for (int x = 0; x < 4; x++) {
         for (int y = 0; x < 4; x++) {
             if (this->getTile(x, y) == nullptr) {
-                isFull = false;
+                return false;
             }
         }
     }
-
-    return isFull;
+    return true;
 }

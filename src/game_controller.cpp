@@ -39,6 +39,8 @@ void GameController::startGame() {
 void GameController::stopGame() {
     printf("Stopping 2048...\n");
     // Print score to screen
+    // Delete self
+    delete this;
 }
 
 void GameController::readInput() {
@@ -66,20 +68,21 @@ void GameController::readInput() {
                 stopGame();
                 return;
         }
-        // Now that we have our input, call the
-        // appropriate logic functions and then
-        // print the resulting board to the console
+        // Now that we have our input, call the appropriate logic functions and then
+        // print the resulting board to the console.
+        // Also, getChar gets the return key along with the input so we have to 
+        // have this if statement to not double
         if (input != '\n') {
-            // getChar gets the return key along with the input
-            // so we have to have this if statement to not double
-            // print everything
+            printf("Checking board status...\n");
             if (board->checkForFullBoard()) {
+                printf("The board is full. Stopping the game.\n");
                 this->stopGame();
+            } else {
+                // Insert the random tile
+                board->addRandomTileToBoard();
+                // Print the updated board
+                board->printBoard();
             }
-            // Insert the random tile
-            board->addRandomTileToBoard();
-            // Print the updated board
-            board->printBoard();
         }
     }
 }
