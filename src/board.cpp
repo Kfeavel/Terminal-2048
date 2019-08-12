@@ -112,7 +112,7 @@ void Board::addRandomTileToBoard() {
 
 bool Board::checkForFullBoard() {
     for (int x = 0; x < 4; x++) {
-        for (int y = 0; x < 4; x++) {
+        for (int y = 0; y < 4; y++) {
             printf("Checking X: %i Y: %i\n", x, y);
             if (this->getTile(x, y) == NULL) {
                 printf("Board open at %i %i\n", x, y);

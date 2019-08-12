@@ -1,5 +1,7 @@
 {
     "version": "2.0.0",
     "command": "make",
-    "problemMatchers": []
+    "problemMatchers": [
+        "$gcc"
+    ]
 }
