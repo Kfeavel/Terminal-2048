@@ -38,7 +38,7 @@ void GameController::startGame() {
 }
 
 void GameController::stopGame() {
-    printf("Stopping 2048...\n");
+    printf("Game Over!\n");
     // Print score to screen
     return;
 }
@@ -48,9 +48,9 @@ void GameController::readInput() {
     char input = NULL;
     // While the user hasn't called the quit key
     while (true) {
-        printf("Checking board status...\n");
+        // printf("Checking board status...\n");
         if (board->checkForFullBoard()) {
-            printf("The board is full. Stopping the game.\n");
+            // printf("The board is full. Stopping the game.\n");
             this->stopGame();
             return;
         }
@@ -91,36 +91,109 @@ void GameController::move(GameController::Direction direction) {
     switch (direction) {
         case top:
             printf("Move upward.\n");
+            for (int x = 0; x < 4; x++) {
+                for (int y = 0; y < 4; y++) {
+                    Tile *tile = this->board->getTile(x, y);
+                    if (tile != NULL) {
+                        this->checkNeighbor(direction, tile);
+                    }
+                }
+            }
             break;
         case bottom:
             printf("Move downward.\n");
+            for (int x = 0; x < 4; x++) {
+                for (int y = 0; y < 4; y++) {
+                    Tile *tile = this->board->getTile(x, y);
+                    if (tile != NULL) {
+                        this->checkNeighbor(direction, tile);
+                    }
+                }
+            }
             break;
         case left:
             printf("Move left.\n");
+            for (int x = 0; x < 4; x++) {
+                for (int y = 0; y < 4; y++) {
+                    Tile *tile = this->board->getTile(x, y);
+                    if (tile != NULL) {
+                        this->checkNeighbor(direction, tile);
+                    }
+                }
+            }
             break;
         case right:
             printf("Move right.\n");
+            for (int x = 0; x < 4; x++) {
+                for (int y = 0; y < 4; y++) {
+                    Tile *tile = this->board->getTile(x, y);
+                    if (tile != NULL) {
+                        this->checkNeighbor(direction, tile);
+                    }
+                }
+            }
             break;
     }
 }
 
 void GameController::checkNeighbor(GameController::Direction direction, Tile* source) {
+    Tile *neighbor = NULL;
     switch (direction) {
         case top:
             printf("Check upward.\n");
-            printf("%i", source->getValue());
+            neighbor = this->board->getTile(source->getX(), source->getY() + 1);
+            // Check if we can combine
+            if (neighbor != NULL) {
+                // If not null, compare values
+                if (neighbor->getValue() == source->getValue()) {
+                    // Pretty sure this isn't right since we're keeping the neighbor and
+                    // removing the source, but I just need to test this for now. The whole
+                    // sliding thing will be weird...
+                    this->combineTiles(neighbor, source);
+                }
+            }
             break;
         case bottom:
             printf("Check downward.\n");
-            printf("%i", source->getValue());
+            neighbor = this->board->getTile(source->getX(), source->getY() - 1);
+            // Check if we can combine
+            if (neighbor != NULL) {
+                // If not null, compare values
+                if (neighbor->getValue() == source->getValue()) {
+                    // Pretty sure this isn't right since we're keeping the neighbor and
+                    // removing the source, but I just need to test this for now. The whole
+                    // sliding thing will be weird...
+                    this->combineTiles(neighbor, source);
+                }
+            }
             break;
         case left:
             printf("Check left.\n");
-            printf("%i", source->getValue());
+            neighbor = this->board->getTile(source->getX() - 1, source->getY());
+            // Check if we can combine
+            if (neighbor != NULL) {
+                // If not null, compare values
+                if (neighbor->getValue() == source->getValue()) {
+                    // Pretty sure this isn't right since we're keeping the neighbor and
+                    // removing the source, but I just need to test this for now. The whole
+                    // sliding thing will be weird...
+                    this->combineTiles(neighbor, source);
+                }
+            }
             break;
         case right:
             printf("Check right.\n");
-            printf("%i", source->getValue());
+            neighbor = this->board->getTile(source->getX() + 1, source->getY());
+            // Check if we can combine
+            if (neighbor != NULL) {
+                // If not null, compare values
+                if (neighbor->getValue() == source->getValue()) {
+                    // Pretty sure this isn't right since we're keeping the neighbor and
+                    // removing the source, but I just need to test this for now. The whole
+                    // sliding thing will be weird...
+                    this->combineTiles(neighbor, source);
+                }
+            }
             break;
     }
 }

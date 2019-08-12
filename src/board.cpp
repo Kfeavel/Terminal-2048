@@ -12,7 +12,7 @@
 #include "board.hpp"
 
 Board::Board() {
-    printf("Constructing a new board.\n");
+    // printf("Constructing a new board.\n");
     // Set everything to nullpts at first
     // That way we can safely destruct later
     for (int i = 0; i < 4; i++) {
@@ -20,12 +20,12 @@ Board::Board() {
             this->boardArray[i][j] = NULL;
         }
     }
-    printf("Seeding rand()...\n");
+    // printf("Seeding rand()...\n");
     srand(time(NULL));
 }
 
 Board::~Board() {
-    printf("Board destructor running yo!\n");
+    // printf("Board destructor running yo!\n");
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
             Tile* t = getTile(i, j);
@@ -93,7 +93,7 @@ void Board::addRandomTileToBoard() {
         x = rand() % 4;
         y = rand() % 4;
     }
-    printf("Open Position Found: %i %i\n", x, y);
+    // printf("Open Position Found: %i %i\n", x, y);
     // Generate a random number between 0 and 100
     Tile *tile = nullptr;
     int chance = rand() % 101;
@@ -113,13 +113,13 @@ void Board::addRandomTileToBoard() {
 bool Board::checkForFullBoard() {
     for (int x = 0; x < 4; x++) {
         for (int y = 0; y < 4; y++) {
-            printf("Checking X: %i Y: %i\n", x, y);
+            // printf("Checking X: %i Y: %i\n", x, y);
             if (this->getTile(x, y) == NULL) {
-                printf("Board open at %i %i\n", x, y);
+                // printf("Board open at %i %i\n", x, y);
                 return false;
             }
         }
     }
-    printf("Board is full according to checkForFullBoard()\n");
+    // printf("Board is full according to checkForFullBoard()\n");
     return true;
 }
